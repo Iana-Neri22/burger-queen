@@ -18,24 +18,23 @@ class Kitchen extends React.Component {
       };
     }
 
-  componentDidMount() {
-    database.collection('orders').get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map(doc => ({...doc.data()}));
-        this.setState({ listItem: data });
-        console.log(data)
-        });
-
-      }
+  // componentDidMount() {
+   
+  //   }
 
       render() {
-
-    
-      return <React.Fragment>
+        database.collection("orders").get()
+        .then((querySnapshot) => {
+          const data = querySnapshot.docs.map(doc => ({ ...doc.data() }));
+          this.setState({ listItem: data })
+        });
+        const orders = this.state.listItem;
+      return <div>
             <h1>{
-            
+               orders.map((orders) =>
+             orders.customerName)
             }</h1> 
-        </React.Fragment>
+        </div>
 
       }
   
